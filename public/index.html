@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!--
+                                          `-.`'.-'
+                                       `-.        .-'.
+                                    `-.    -./\.-    .-'
+                                        -.  /_|\  .-
+                                    `-.   `/____\'   .-'.
+                                 `-.    -./.-""-.\.-      '
+                                    `-.  /< (()) >\  .-'
+                                  -   .`/__`-..-'__\'   .-
+                                ,...`-./___|____|___\.-'.,.
+                                   ,-'   ,` . . ',   `-,
+                                ,-'   ________________  `-,
+                                   ,'/____|_____|_____\
+                                  / /__|_____|_____|___\
+                                 / /|_____|_____|_____|_\
+                                ' /____|_____|_____|_____\
+                              .' /__|_____|_____|_____|___\
+                             ,' /|_____|_____|_____|_____|_\
+,,---''--...___...--'''--.. /../____|_____|_____|_____|_____\ ..--```--...___...--``---,,
+                           '../__|_____|_____|_____|_____|___\
+      \    )              '.:/|_____|_____|_____|_____|_____|_\               (    /
+      )\  / )           ,':./____|_____|_____|_____|_____|_____\             ( \  /(
+     / / ( (           /:../__|_____|_____|_____|_____|_____|___\             ) ) \ \
+    | |   \ \         /.../|_____|_____|_____|_____|_____|_____|_\           / /   | |
+ .-.\ \    \ \       '..:/____|_____|_____|_____|_____|_____|_____\         / /    / /.-.
+(=  )\ `._.' |       \:./ _  _ ___  ____ ____ _    _ _ _ _ _  _ ___\        | `._.' /(  =)
+ \ (_)       )       \./  											 \       (       (_) /
+  \    `----'         """"""""""""""""""""""""""""""""""""""""""""""""       `----'    /
+   \   ____\__         												        __/____   /
+    \ (=\     \        												       /     /-) /
+     \_)_\     \     												      /     /_(_/
+          \     \                                                        /     /
+           )     )  _                                                _  (     (
+          (     (,-' `-..__                                    __..-' `-,)     )
+           \_.-''          ``-..____                  ____..-''          ``-._/
+            `-._                    ``--...____...--''                    _.-'
+                `-.._                                                _..-'
+                     `-..__           Dis Bitch is crazy       __..-'
+                           ``-..____                  ____..-''
+                                    ``--...____...--''
+-->
+
+  <title>DisBitch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style type="text/css">
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      background-color: green;
+      }
+
+    h1 {
+      color: #f45c42;
+      font-size: 40px;
+    }
+
+    .main {
+      background-color: blue;
+      color: pink;
+    }
+
+    .btn {
+      padding: 8px;
+      background-color: #fff600;
+      width: 20%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="main">
+
+      <h1>DisBitch - "Not A Proxy we Swear"</h1>
+
+      <div id="error"></div>
+
+      <form action="no-js" method="get" id="unblocker-form">
+        <p>
+          'Search' our site - Note search bar is broken, do not use it:
+          <input type="text" id="url" name="url" autofocus="autofocus" />
+          <input type="submit" value="Go" />
+        </p>
+
+      </form>
+
+      <h3>About DisBitch</h3>
+      <p>We are not a proxy, we swear. Say it with us, "This is not a proxy". Very good. You are doing well. Say it again, "This is not a proxy". Well done. We are proud of you. Give us your money.</p>
+      <p><a href="http://disbitch.herokuapp.com/proxy/https://www.patreon.com/yiffalicious">Support Us On Patreon</a></p>
+
+      <h3>Quick Links</h3>
+      <div style="display: block">
+      <p class='btn'><a href="http://disbitch.herokuapp.com/proxy/https://www.youtube.com">YouTube</a></p>
+      <p class='btn'><a href="http://disbitch.herokuapp.com/proxy/https://www.messenger.com/">Messenger.com</a></p>
+    </div>
+    </div>
+
+  </div>
+	<script>
+		function $(id){
+			return document.getElementById(id);
+		}
+
+		$('unblocker-form').onsubmit = function(){
+			var url = $('url').value;
+			if(url.substr(0,4) != "http"){
+				url = "http://" + url;
+			}
+			window.location.pathname = 'proxy/' + url;
+			return false;
+		};
+
+		function checkError(){
+			var search = window.location.search;
+			var start = search.indexOf('error=');
+			if(start > -1){
+				var stop = search.indexOf('&', start);
+				if(stop == -1){ stop = undefined; }
+				// +6 for "error="
+				var err = search.substr(start+6, stop);
+                var $error = $('error');
+				$error.innerText = $error.textContent = decodeURIComponent(err);
+				$error.style.display = "block";
+			}
+		}
+
+		window.onload = function() {
+			$('url').focus();
+			checkError();
+		}
+	</script>
+
+
+</body>
+</html>
