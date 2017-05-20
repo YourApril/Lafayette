@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!--
+                                          `-.`'.-'
+                                       `-.        .-'.
+                                    `-.    -./\.-    .-'
+                                        -.  /_|\  .-
+                                    `-.   `/____\'   .-'.
+                                 `-.    -./.-""-.\.-      '
+                                    `-.  /< (()) >\  .-'
+                                  -   .`/__`-..-'__\'   .-
+                                ,...`-./___|____|___\.-'.,.
+                                   ,-'   ,` . . ',   `-,
+                                ,-'   ________________  `-,
+                                   ,'/____|_____|_____\
+                                  / /__|_____|_____|___\
+                                 / /|_____|_____|_____|_\
+                                ' /____|_____|_____|_____\
+                              .' /__|_____|_____|_____|___\
+                             ,' /|_____|_____|_____|_____|_\
+,,---''--...___...--'''--.. /../____|_____|_____|_____|_____\ ..--```--...___...--``---,,
+                           '../__|_____|_____|_____|_____|___\
+      \    )              '.:/|_____|_____|_____|_____|_____|_\               (    /
+      )\  / )           ,':./____|_____|_____|_____|_____|_____\             ( \  /(
+     / / ( (           /:../__|_____|_____|_____|_____|_____|___\             ) ) \ \
+    | |   \ \         /.../|_____|_____|_____|_____|_____|_____|_\           / /   | |
+ .-.\ \    \ \       '..:/____|_____|_____|_____|_____|_____|_____\         / /    / /.-.
+(=  )\ `._.' |       \:./ _  _ ___  ____ ____ _    _ _ _ _ _  _ ___\        | `._.' /(  =)
+ \ (_)       )       \./  											 \      (       (_) /
+  \    `----'         """"""""""""""""""""""""""""""""""""""""""""""""       `----'    /
+   \   ____\__         												        __/____   /
+    \ (=\     \        												       /     /-) /
+     \_)_\     \     												      /     /_(_/
+          \     \                                                        /     /
+           )     )  _                                                _  (     (
+          (     (,-' `-..__                                    __..-' `-,)     )
+           \_.-''          ``-..____                  ____..-''          ``-._/
+            `-._                    ``--...____...--''                    _.-'
+                `-.._                                                _..-'
+                     `-..__                                    __..-'
+                           ``-..____                  ____..-''
+                                    ``--...____...--''
+-->
+
+  <title>Lafayette</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px|Source+Sans+Pro" rel="stylesheet">
+  <style type="text/css">
+    body {
+      text-align: center;
+      background-color: #2d2d2d;
+      }
+
+    h1 {
+      font-family: "Slabo", serif;
+      color: #002a60;
+      font-size: 40px;
+    }
+
+    .main {
+      font-family: 'Source Sans Pro', sans-serif;
+      background-color: #5bfffc;
+      color: #474949;
+    }
+
+    .btn {
+      padding: 8px;
+      background-color: #9ccbd1;
+      width: 20%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="main">
+
+      <h1>Lafayette - "I Travled Here To Flip Off The King</h1>
+
+      <div id="error"></div>
+
+      <form action="no-js" method="get" id="unblocker-form">
+        <p>
+          'Search' our site - Note search bar is broken:
+          <input type="text" id="url" name="url" autofocus="autofocus" />
+          <input type="submit" value="Go" />
+        </p>
+
+      </form>
+
+      <h3>About Lafayette</h3>
+      <p>Marie-Joseph Paul Yves Roch Gilbert du Motier, Marquis de Lafayette, in the U.S. often known simply as Lafayette, was a French aristocrat and military officer who fought in the American Revolutionary War. A close friend of George Washington, Alexander Hamilton, and Thomas Jefferson, Lafayette was a key figure in the French Revolution of 1789 and the July Revolution of 1830.</p>
+
+      <h3>Quick Links</h3>
+      <div style="display: block">
+      <p class='btn'><a href="http://disbitch.herokuapp.com/proxy/https://www.youtube.com">Click To Learn About Hamilton</a></p>
+      <p class='btn'><a href="http://disbitch.herokuapp.com/proxy/https://www.messenger.com/">Click To Learn About Aaron Burr</a></p>
+    </div>
+    </div>
+
+  </div>
+	<script>
+		function $(id){
+			return document.getElementById(id);
+		}
+
+		$('unblocker-form').onsubmit = function(){
+			var url = $('url').value;
+			if(url.substr(0,4) != "http"){
+				url = "http://" + url;
+			}
+			window.location.pathname = 'proxy/' + url;
+			return false;
+		};
+
+		function checkError(){
+			var search = window.location.search;
+			var start = search.indexOf('error=');
+			if(start > -1){
+				var stop = search.indexOf('&', start);
+				if(stop == -1){ stop = undefined; }
+				// +6 for "error="
+				var err = search.substr(start+6, stop);
+                var $error = $('error');
+				$error.innerText = $error.textContent = decodeURIComponent(err);
+				$error.style.display = "block";
+			}
+		}
+
+		window.onload = function() {
+			$('url').focus();
+			checkError();
+		}
+	</script>
+
+
+</body>
+</html>
